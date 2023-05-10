@@ -145,14 +145,23 @@ class DisplayController extends Controller
     }
     public function sportsAction()
     {
+      // echo "<pre>";
+      // print_r($_SESSION['data']);die;
         foreach ($_SESSION['data'] as $key => $value) {
             $this->view->sport .= '<div class="card m-2" style="color: #4B515D; border-radius: 35px;">
                 <div class="card-body p-4">
-                  <div class="d-flex">
-                    <h5>' . $key . '</h5>
-                  </div>
-                </div>
-              </div>';
+                  <div class="">
+                    <h3>' . $key . '</h3>';
+                    foreach ($value as $para) {
+                      $this->view->sport .= '<p>Country Name: ' . $para->country . '<p>
+                      <p>Tournament Name: ' . $para->tournament . '<p>
+                      <p>Match Between: ' . $para->match . '<p>
+                      <p>Stadium Name: ' . $para->stadium . '<p><hr>';
+                      
+                    }
+            $this->view->sport .='</div>
+              </div>
+            </div>';
         }
     }
     public function astronomyAction()
